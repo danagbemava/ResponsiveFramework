@@ -355,31 +355,32 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper>
         ? Container(color: Colors.white)
         : InheritedResponsiveWrapper(
             data: ResponsiveWrapperData.fromResponsiveWrapper(this),
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                widget.background ?? SizedBox.shrink(),
+            child:
+                // Stack(
+                // alignment: Alignment.topCenter,
+                // children: [
+                // widget.background ?? SizedBox.shrink(),
                 MediaQuery(
-                  data: calculateMediaQueryData(),
-                  child: SizedBox(
-                    width: screenWidth,
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        width: scaledWidth,
-                        height: (widget.shrinkWrap == true &&
-                                widget.mediaQueryData == null)
-                            ? null
-                            : scaledHeight,
-                        // Shrink wrap height if no MediaQueryData is passed.
-                        alignment: Alignment.center,
-                        child: widget.child,
-                      ),
-                    ),
+              data: calculateMediaQueryData(),
+              child: SizedBox(
+                width: screenWidth,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    width: scaledWidth,
+                    height: (widget.shrinkWrap == true &&
+                            widget.mediaQueryData == null)
+                        ? null
+                        : scaledHeight,
+                    // Shrink wrap height if no MediaQueryData is passed.
+                    alignment: Alignment.center,
+                    child: widget.child,
                   ),
                 ),
-              ],
+              ),
+              //   ),
+              // ],
             ),
           );
   }
